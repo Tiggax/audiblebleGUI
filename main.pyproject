@@ -1,3 +1,3 @@
 {
-    "files": ["qml/main.qml","qml/controls/LeftMenubtn.qml","classes/libClass.py","LibPage.py","main.py","qml/pages/StorePage.qml","qml/pages/SettingsPage.qml","qml/pages/LibraryPage.qml","images","qml/controls/BookItem.qml"]
+    "files": ["qml/pages/StorePage.qml","qml/main.qml","classes/libClass.py","images","qml/controls/BookItem.qml","qml/controls/LeftMenubtn.qml","classes/Dialog/captchadialog.ui","qml/controls/CaptchaDialog.qml","main.py","qml/pages/LibraryPage.qml","classes/Dialog/captchadialog.h","qml/pages/SettingsPage.qml","classes/Dialog/captchadialog.cpp","qml/controls/CaptchaDialog.py"]
 }

@@ -44,18 +44,18 @@ Item {
                 y: 265
                 text: "+"
                 onClicked: {
-                    backend.welcomeText(test.bookAuthor)
+//                    backend.welcomeText(test.bookAuthor)
                 }
             }
         }
     }
-    Connections {
-        target: backend
+//    Connections {
+//        target: backend
 
-        function onGetName(name){
-            text1.text = name
-        }
-    }
+//        function onGetName(name){
+//            text1.text = name
+//        }
+//    }
 }
 
 /*##^##

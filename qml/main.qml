@@ -9,23 +9,24 @@ import "pages"
 Window {
 
     id: mainwindow
-    width: 720
-    height: 480
+    width: 1280
+    height: 720
     visible: true
     title: qsTr("Audibleble")
 
     Rectangle {
         id: container
-        color: "#0039ab"
+        color: "#002879"
         anchors.fill: parent
 
         LeftMenubtn {
             id: leftMenubtn
             x: 0
             y: 0
+            clip: false
             colorMouseOver: "#114efb"
-            imgSource: "../images/svq_images/menu2.svg"
-            colorDefault: "#285dca"
+            imgSource: "../images/svq_images/menu.svg"
+            colorDefault: "#00007f"
             textContent: "Menu"
 
             Connections {
@@ -42,6 +43,7 @@ Window {
             anchors.left: leftMenu.right
             anchors.right: parent.right
             anchors.top: parent.top
+            clip: true
             anchors.topMargin: 0
             anchors.rightMargin: 0
             anchors.leftMargin: 0
@@ -81,6 +83,7 @@ Window {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+                clip: true
                 anchors.bottomMargin: 45
                 anchors.rightMargin: 0
                 anchors.leftMargin: 0
@@ -90,8 +93,8 @@ Window {
                     id: libBtn
                     colorMouseOver: "#114efb"
                     textContent: "Knjižnica"
-                    imgSource: "../images/svq_images/inbox kopija.svg"
-                    colorDefault: "#285dca"
+                    imgSource: "../images/svq_images/inbox.svg"
+                    colorDefault: "#00007f"
                     onClicked: {
                         libBtn.isSelected = true
                         storeBtn.isSelected = false
@@ -106,10 +109,11 @@ Window {
                 LeftMenubtn {
                     id: storeBtn
                     anchors.top: libBtn.bottom
+                    clip: false
                     colorMouseOver: "#114efb"
                     textContent: "Trgovina"
-                    imgSource: "../images/svq_images/cart kopija.svg"
-                    colorDefault: "#285dca"
+                    imgSource: "../images/svq_images/cart.svg"
+                    colorDefault: "#00007f"
                     anchors.topMargin: 5
                     onClicked: {
                         libBtn.isSelected = false
@@ -126,8 +130,8 @@ Window {
                     anchors.bottomMargin: 0
                     colorMouseOver: "#114efb"
                     textContent: "Nastavitve"
-                    imgSource: "../images/svq_images/settings kopija.svg"
-                    colorDefault: "#285dca"
+                    imgSource: "../images/svq_images/settings.svg"
+                    colorDefault: "#00007f"
                     onClicked: {
                         libBtn.isSelected = false
                         storeBtn.isSelected = false
@@ -163,7 +167,14 @@ Window {
         }
 
 
-        property string states: "none.none"
+    }
+    CaptchaDialog {
+        id: captchaDlg
+
+
     }
 
 }
+
+
+

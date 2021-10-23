@@ -2,6 +2,10 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick 2.9
 import QtQuick.Dialogs 1.2
+import QtWebEngine 1.8
+import QtWebChannel 1.0
+import "../controls"
+
 Item {
     Rectangle {
         id: backgroundSettingsPage
@@ -72,6 +76,7 @@ Item {
                 anchors.left: regionText.right
                 anchors.right: parent.right
                 anchors.top: passTextField.bottom
+                currentIndex: 5
                 anchors.rightMargin: 5
                 font.pointSize: 8
                 anchors.leftMargin: 6
@@ -79,16 +84,16 @@ Item {
                 textRole: "text"
                 valueRole: "value"
                 model: [
-                { value: "us" , text: "USA" },
-                { value: "ca" , text: "Canada" },
-                { value: "uk" , text: "UK and Ireland" },
-                { value: "au" , text: "Australia and New Zeland" },
-                { value: "fr" , text: "France, Belgium and Switzerland" },
-                { value: "de" , text: "Germany, Austria and Switzerland" },
-                { value: "jp" , text: "Japan" },
-                { value: "it" , text: "Italy" },
-                { value: "in" , text: "India" },
-                { value: "es" , text: "Spain" }
+                    { value: "us" , text: "USA" },
+                    { value: "ca" , text: "Canada" },
+                    { value: "uk" , text: "UK and Ireland" },
+                    { value: "au" , text: "Australia and New Zeland" },
+                    { value: "fr" , text: "France, Belgium and Switzerland" },
+                    { value: "de" , text: "Germany, Austria and Switzerland" },
+                    { value: "jp" , text: "Japan" },
+                    { value: "it" , text: "Italy" },
+                    { value: "in" , text: "India" },
+                    { value: "es" , text: "Spain" }
                 ]
 
             }
@@ -110,18 +115,55 @@ Item {
                 checkable: false
                 anchors.topMargin: 20
                 anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: {
+                    backend.createLoginFile(userTextField.text,passTextField.text,regionBox.currentValue)
+                }
             }
         }
 
     }
 
-        RoundButton {
-            id: roundButton
-            x: 387
-            y: 63
-            text: "+"
-            onClicked: {
+    CaptchaDialog {
+        id: thing
+
+        captchaUrl: "https://opfcaptcha-prod.s3.amazonaws.com/637247c532fc4e91b188a8d2d7d4dc5a.jpg?AWSAccessKeyId=AKIA5WBBRBBBR62BVEWC&Expires=1629667787&Signature=7yxaJtTc35WpvQV4zdmOqctggrI%3D"
+        onAccepted: {
+            return thing.fieldText
         }
+        onRejected: {
+
+        }
+
+    }
+
+    RoundButton {
+        id: roundButton
+        x: 387
+        y: 63
+        text: "+"
+        onClicked: {
+            thing.open()
+        }
+
+    }
+//    QtObject {
+//    id: functions
+//    function OpenDialogBox(url){
+
+//    }
+//    }
+
+
+    Connections {
+        target: backend
+        function onCaptchaCode(koda){
+            thing.captchaUrl= koda
+            thing.open()
+
+        }
+
+        //        function onImePythonFunkcije(x){
+        //        }
 
     }
 
@@ -129,9 +171,12 @@ Item {
 
 
 
+
+
+
+
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:640}D{i:3}D{i:4}D{i:5}D{i:6}D{i:7}D{i:8}D{i:9}
-D{i:2}
+    D{i:0;autoSize:true;height:480;width:640}
 }
 ##^##*/
