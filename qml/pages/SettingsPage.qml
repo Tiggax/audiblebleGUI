@@ -123,29 +123,18 @@ Item {
 
     }
 
-    CaptchaDialog {
-        id: thing
 
-        captchaUrl: "https://opfcaptcha-prod.s3.amazonaws.com/637247c532fc4e91b188a8d2d7d4dc5a.jpg?AWSAccessKeyId=AKIA5WBBRBBBR62BVEWC&Expires=1629667787&Signature=7yxaJtTc35WpvQV4zdmOqctggrI%3D"
-        onAccepted: {
-            return thing.fieldText
-        }
-        onRejected: {
 
-        }
+//    RoundButton {
+//        id: roundButton
+//        x: 387
+//        y: 63
+//        text: "+"
+//        onClicked: {
+//            backend.openInput()
+//        }
 
-    }
-
-    RoundButton {
-        id: roundButton
-        x: 387
-        y: 63
-        text: "+"
-        onClicked: {
-            thing.open()
-        }
-
-    }
+//    }
 //    QtObject {
 //    id: functions
 //    function OpenDialogBox(url){
@@ -154,18 +143,7 @@ Item {
 //    }
 
 
-    Connections {
-        target: backend
-        function onCaptchaCode(koda){
-            thing.captchaUrl= koda
-            thing.open()
 
-        }
-
-        //        function onImePythonFunkcije(x){
-        //        }
-
-    }
 
 }
 

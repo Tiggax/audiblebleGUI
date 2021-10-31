@@ -15,7 +15,9 @@ from PySide2.QtCore import QObject, Slot, Signal
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide6.QtWidgets import QInputDialog,QDialog
 from PySide2.QtWidgets import QWidget
-import dialog
+
+#import qml/main.qml
+sys.path.append("qml")
 
 
 
@@ -29,6 +31,10 @@ import dialog
     # MainWindow.captchaCode.emit(url)
 def getCaptcha(url):
     print(url)
+    ne = QInputDialog()
+    ne.open()
+
+
 
 
 #TODO nekak je treba da captcha_callback k pošlje url captche dobi return kode k jo vidiš, sam skos nadaljuje z pošiljanjem....
